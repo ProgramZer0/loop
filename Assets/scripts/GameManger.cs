@@ -7,7 +7,8 @@ public class GameManger : MonoBehaviour
 
     private void FixedUpdate()
     {
-        timer = +Time.deltaTime;
+        if(timerOn)
+            timer += Time.deltaTime;
     }
 
     public void startTimer()
@@ -23,6 +24,11 @@ public class GameManger : MonoBehaviour
     public void resetTimer()
     {
         timer = 0;
+    }
+
+    public void setTimer(float time)
+    {
+        timer = time;
     }
 
     public float getTimerSeconds()
