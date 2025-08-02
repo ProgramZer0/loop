@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManger : MonoBehaviour
 {
-    bool timerOn = false;
+    bool timerOn = true;
     float timer = 0;
 
     private void FixedUpdate()

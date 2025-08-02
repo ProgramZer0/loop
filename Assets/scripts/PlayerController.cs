@@ -88,11 +88,11 @@ public class PlayerController : MonoBehaviour
 
         TryRecordCommand(moving, jump);
 
-		Vector3 targetVelocity = new Vector2(move * 10f, body.linearVelocity.y);
-		body.linearVelocity = Vector3.SmoothDamp(body.linearVelocity, targetVelocity, ref zero, 0.05f);
+        Vector3 targetVelocity = new Vector2(move * 10f, body.linearVelocity.y);
+        body.linearVelocity = Vector3.SmoothDamp(body.linearVelocity, targetVelocity, ref zero, 0.05f);
 
-		// Flip character
-		if (move > 0 && !isRight)
+        // Flip character
+        if (move > 0 && !isRight)
         {
             Flip();
         }
@@ -101,9 +101,7 @@ public class PlayerController : MonoBehaviour
             Flip();
         }
 
-		TryRecordCommand(moving, jump);
-		
-		if (!inAir && jump)
+        if (!inAir && jump)
         {
             Debug.Log("jumping");
             inAir = true;
@@ -147,11 +145,15 @@ public class PlayerController : MonoBehaviour
         if (GM.getTimerSeconds() >= 5f)
         {
             GM.setTimer(GM.getTimerSeconds() - 5f);
-            findandDeleteCmdsPast(GM.getTimerSeconds() - 5f);
+            findandDeleteCmdsPast(GM.getTimerSeconds());
         }
         else
         {
             currentCommands.Clear();
+            foreach (GameObject ghostn in GameObject.FindGameObjectsWithTag("Ghost"))
+            {
+                Destroy(ghostn);
+            }
             GM.resetTimer();
         }
     }
