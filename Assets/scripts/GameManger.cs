@@ -1,7 +1,9 @@
 using UnityEngine;
+using TMPro;
 
 public class GameManger : MonoBehaviour
 {
+    [SerializeField] private GameObject timerText;
     bool timerOn = true;
     float timer = 0;
 
@@ -9,6 +11,8 @@ public class GameManger : MonoBehaviour
     {
         if(timerOn)
             timer += Time.deltaTime;
+        timerText.GetComponent<TextMeshProUGUI>().text = timer.ToString();
+
     }
 
     public void startTimer()
