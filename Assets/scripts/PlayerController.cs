@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private Transform groundCheck;
 	[SerializeField] private LayerMask groundLayer;
 	[SerializeField] private GameManger GM;
+	[SerializeField] private GameObject standingAnimate;
+	[SerializeField] private GameObject walkingAnimate;
+
 
 
 	private Rigidbody2D body;
@@ -64,6 +67,8 @@ public class PlayerController : MonoBehaviour
 	{
         if (move == 0)
         {
+			standingAnimate.SetActive(true);
+			walkingAnimate.SetActive(false);
 			int count;
 
             try
@@ -104,6 +109,9 @@ public class PlayerController : MonoBehaviour
 		}
 		else
         {
+			standingAnimate.SetActive(false);
+			walkingAnimate.SetActive(true);
+
 			bool wasMoving = false;
 			bool wasJumping = false;
 
