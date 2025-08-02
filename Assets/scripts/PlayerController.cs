@@ -37,10 +37,17 @@ public class PlayerController : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         currentCommands = new List<Commands>();
+
+        currentCommands.Add(new Commands(GM.getTimerSeconds(), false, false, isRight, transform.position, null));
     }
 
     private void Update()
     {
+        if (currentCommands.Count == 0)
+        {
+            currentCommands.Add(new Commands(GM.getTimerSeconds(), false, false, isRight, transform.position, null));
+        }
+
         inputH = Input.GetAxis("Horizontal") * speed;
 
         interact = Input.GetKeyDown(KeyCode.Mouse0);
@@ -137,6 +144,8 @@ public class PlayerController : MonoBehaviour
 
     private void TravelPast()
     {
+        Debug.Log("travling");
+
         if (currentCommands.Count == 0) return;
 
         GameObject ghost = Instantiate(ghostPrefab, currentCommands[0].pos, Quaternion.identity);
@@ -150,10 +159,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             currentCommands.Clear();
-            foreach (GameObject ghostn in GameObject.FindGameObjectsWithTag("Ghost"))
-            {
-                Destroy(ghostn);
-            }
             GM.resetTimer();
         }
     }
@@ -172,6 +177,10 @@ public class PlayerController : MonoBehaviour
 
     private void Reset()
     {
+        foreach (GameObject ghostn in GameObject.FindGameObjectsWithTag("Ghost"))
+        {
+            Destroy(ghostn);
+        }
         GM.resetTimer();
         currentCommands.Clear();
     }
