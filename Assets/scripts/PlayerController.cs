@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
 
 
         GameObject ghost = Instantiate(ghostPrefab, currentCommands[0].pos, Quaternion.identity);
-        ghost.GetComponent<GhostPlayer>().Initialize(currentCommands, GM, GM.getTimerSeconds());
+        ghost.GetComponent<GhostPlayer>().Initialize(currentCommands, GM, GM.getTimerSeconds() - 5f);
 
         if (GM.getTimerSeconds() >= 5f)
         {
