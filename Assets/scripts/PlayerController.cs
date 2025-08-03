@@ -67,12 +67,13 @@ public class PlayerController : MonoBehaviour
         float moveAmount = inputH * Time.fixedDeltaTime;
         bool moving = inputH != 0f;
         if (cannotMove) return;
-        Move(moveAmount, false, jumping);
 
         if (interact)
         {
             TryInteract();
         }
+
+        Move(moveAmount, false, jumping);
 
         if (timeFutureTravel)
         {
@@ -100,13 +101,13 @@ public class PlayerController : MonoBehaviour
 
     private void TryInteract()
     {
-        Debug.Log("interacting");
         Collider2D hit = Physics2D.OverlapCircle(transform.position, interactRange, interactLayer);
         if (hit != null)
         {
             Lever lever = hit.GetComponent<Lever>();
             if (lever != null)
             {
+                Debug.Log("toggling");
                 lever.Toggle();
             }
         }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4288665135453876823}
   - component: {fileID: 773820558544866431}
   - component: {fileID: 3412445838144678110}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pressureplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,4 +150,4 @@ MonoBehaviour:
   offSprite: {fileID: 2530564911472380330, guid: 92de28038f39648419adcc7e5931aa21, type: 3}
   onSprite: {fileID: 1763989116612304091, guid: 92de28038f39648419adcc7e5931aa21, type: 3}
   GM: {fileID: 0}
-  target: {fileID: 0}
+  targets: []

@@ -61,8 +61,12 @@ public class GhostPlayer : MonoBehaviour
         {
             if (GM.getTimerSeconds() >= replayCommands[replayCommands.Count - 1].time)
             {
-                cmd = replayCommands[replayCommands.Count - 1];
-                next = cmd;
+                replayCommands.Clear(); 
+                body.linearVelocity = Vector2.zero;
+                body.angularVelocity = 0f;
+                standingAnimate.SetActive(true);
+                walkingAnimate.SetActive(false);
+                return;
             }
             else
             {
