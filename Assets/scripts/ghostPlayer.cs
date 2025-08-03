@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class GhostPlayer : MonoBehaviour
     private float startTimeOffset = 0f;
     private Vector3 zero = Vector3.zero;
     private bool jumped = false;
+    private bool interacted = false;
 
     public void Initialize(List<Commands> commands, GameManger gameManager, float spawnTime)
     {
@@ -50,6 +52,11 @@ public class GhostPlayer : MonoBehaviour
                 next = replayCommands[i + 1];
                 break;
             }
+        }
+
+        if (cmd.interact && !interacted)
+        {
+            AttemptInteraction();
         }
 
         if (cmd == null)
@@ -112,6 +119,21 @@ public class GhostPlayer : MonoBehaviour
         body.linearVelocity = Vector3.SmoothDamp(body.linearVelocity, targetVelocity, ref zero, 0.05f);
 
         
+    }
+
+    private void AttemptInteraction()
+    {
+        float direction = transform.localScale.x > 0 ? 1f : -1f;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * direction, 1f);
+
+        if (hit.collider != null)
+        {
+            var interactable = hit.collider.GetComponent<Lever>();
+            if (interactable != null)
+            {
+                interactable.Toggle();
+            }
+        }
     }
 
     private void Flip()

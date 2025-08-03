@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class timeBox : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private GameManger GM;
+
+    private float spawnTime = 0f;
+    private Vector3 spawnPos;
+
+    private void Start()
     {
-        
+        spawnPos = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Restart()
     {
-        
+        transform.position = spawnPos;
     }
 }

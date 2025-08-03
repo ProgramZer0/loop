@@ -1,16 +1,39 @@
 using UnityEngine;
 
-public class lever : MonoBehaviour
+public class Lever : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Sprite offSprite;
+    [SerializeField] private Sprite onSprite;
+    [SerializeField] private GameManger GM;
+    [SerializeField] private GameObject target;
+
+    private SpriteRenderer spriteRenderer;
+    private bool isOn = false;
+
+    private void Awake()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        UpdateSprite();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Restart()
     {
+        isOn = false;
+    }
         
+    public void Toggle()
+    {
+        isOn = !isOn;
+        UpdateSprite();
+        if (target != null)
+        {
+
+            target.SendMessage("OnLeverToggle", isOn, SendMessageOptions.DontRequireReceiver);
+        }
+    }
+
+    private void UpdateSprite()
+    {
+        spriteRenderer.sprite = isOn ? onSprite : offSprite;
     }
 }

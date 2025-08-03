@@ -9,8 +9,9 @@ public class Commands
     public Vector2 pos;
     public Commands nextCommand;
     public Commands lastCommand;
+    public bool interact;
 
-    public Commands(float _time, bool _moving, bool _jumping, bool face,  Vector2 _pos, Commands last)
+    public Commands(float _time, bool _moving, bool _jumping, bool face, bool interacting,  Vector2 _pos, Commands last)
     {
         time = _time;
         moving = _moving;
@@ -18,15 +19,17 @@ public class Commands
         facingRight = face;
         lastCommand = last;
         pos = _pos;
+        interact = interacting;
     }
 
-    public Commands(float _time, bool _moving, bool _jumping, bool face, Vector2 _pos)
+    public Commands(float _time, bool _moving, bool _jumping, bool face, bool interacting, Vector2 _pos)
     {
         time = _time;
         facingRight = face;
         moving = _moving;
         jumping = _jumping;
         lastCommand = null;
+        interact = interacting;
         pos = _pos;
     }
 
