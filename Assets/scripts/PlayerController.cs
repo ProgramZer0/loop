@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameManger GM;
     [SerializeField] private GameObject standingAnimate;
     [SerializeField] private GameObject walkingAnimate;
+    [SerializeField] private GameObject walkingSound;
     [SerializeField] private GameObject ghostPrefab;
 
     private Rigidbody2D body;
@@ -117,7 +118,15 @@ public class PlayerController : MonoBehaviour
     {
         bool moving = move != 0f;
 
-        // Animations
+        if (moving)
+        {
+            walkingSound.SetActive(true);
+        }
+        else
+        {
+            walkingSound.SetActive(false);
+        }
+
         standingAnimate.SetActive(!moving);
         walkingAnimate.SetActive(moving);
 
