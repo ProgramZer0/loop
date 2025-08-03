@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpHeight = 400f;
-    [SerializeField] private float interactRange = 1f;
+    [SerializeField] private float interactRange = 2f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask interactLayer;
@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour
 
     private void TryInteract()
     {
+        Debug.Log("interacting");
         Collider2D hit = Physics2D.OverlapCircle(transform.position, interactRange, interactLayer);
         if (hit != null)
         {
@@ -171,7 +172,7 @@ public class PlayerController : MonoBehaviour
 
     private void TravelPast()
     {
-        Debug.Log("travling");
+        //Debug.Log("travling");
 
         if (currentCommands.Count == 0) return;
 

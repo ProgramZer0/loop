@@ -8,6 +8,9 @@ public class GhostPlayer : MonoBehaviour
     [SerializeField] private GameObject walkingAnimate;
     [SerializeField] private GameManger GM;
     [SerializeField] private GameObject ghostTotal;
+    [SerializeField] private LayerMask interactLayer;
+    [SerializeField] private float interactionRange = 2f;
+
 
     private Rigidbody2D body;
     private List<Commands> replayCommands;
@@ -54,11 +57,6 @@ public class GhostPlayer : MonoBehaviour
             }
         }
 
-        if (cmd.interact && !interacted)
-        {
-            AttemptInteraction();
-        }
-
         if (cmd == null)
         {
             if (GM.getTimerSeconds() >= replayCommands[replayCommands.Count - 1].time)
@@ -86,6 +84,19 @@ public class GhostPlayer : MonoBehaviour
             transform.position = cmd.pos;
         }
 
+        if (cmd.interact)
+        {
+            if (!interacted)
+            {
+                AttemptInteraction();
+                interacted = true;
+            }
+        }
+        else
+        {
+            interacted = false;
+        }
+
         if (cmd.facingRight && cmd.moving)
         {
             standingAnimate.SetActive(false);
@@ -111,6 +122,11 @@ public class GhostPlayer : MonoBehaviour
             body.AddForce(new Vector2(0f, 400f));
         }
 
+        if (!cmd.jumping)
+        {
+            jumped = false;
+        }
+
         if (cmd.facingRight != transform.localScale.x > 0)
             Flip();
 
@@ -123,15 +139,14 @@ public class GhostPlayer : MonoBehaviour
 
     private void AttemptInteraction()
     {
-        float direction = transform.localScale.x > 0 ? 1f : -1f;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * direction, 1f);
-
-        if (hit.collider != null)
+        Debug.Log("interacting");
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, interactionRange, interactLayer);
+        if (hit != null)
         {
-            var interactable = hit.collider.GetComponent<Lever>();
-            if (interactable != null)
+            Lever lever = hit.GetComponent<Lever>();
+            if (lever != null)
             {
-                interactable.Toggle();
+                lever.Toggle();
             }
         }
     }
@@ -159,7 +174,8 @@ public class GhostPlayer : MonoBehaviour
             Commands cmd = replayCommands[i];
             string msg = $"[{i}] Time: {cmd.time:F2}, Pos: {cmd.pos}, " +
                          $"Moving: {cmd.moving}, Jumping: {cmd.jumping}, " +
-                         $"FacingRight: {cmd.facingRight}";
+                         $"FacingRight: {cmd.facingRight}, " +
+                         $"interacting: {cmd.interact}";
             Debug.Log(msg);
         }
     }

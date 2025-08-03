@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8925424762019320304}
   - component: {fileID: 2941898623697303130}
   - component: {fileID: 1056382451752155786}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ MonoBehaviour:
   offSprite: {fileID: -3975624549204834352, guid: 457b96d7b442ee449879899d00135940, type: 3}
   onSprite: {fileID: -258920163012198913, guid: 457b96d7b442ee449879899d00135940, type: 3}
   GM: {fileID: 0}
-  target: {fileID: 0}
+  targets: []
 --- !u!61 &1056382451752155786
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -139,15 +139,15 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.2390132, y: -0.4724686}
+  m_Offset: {x: 0.005724907, y: -0.4724686}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.92, y: 1.23}
+    oldSize: {x: 1.41, y: 1.23}
     newSize: {x: 0.92, y: 1.23}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.4419737, y: 0.2850628}
+  m_Size: {x: 0.51922035, y: 0.2850628}
   m_EdgeRadius: 0

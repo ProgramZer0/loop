@@ -5,7 +5,7 @@ public class Lever : MonoBehaviour
     [SerializeField] private Sprite offSprite;
     [SerializeField] private Sprite onSprite;
     [SerializeField] private GameManger GM;
-    [SerializeField] private GameObject target;
+    [SerializeField] private GameObject[] targets;
 
     private SpriteRenderer spriteRenderer;
     private bool isOn = false;
@@ -25,10 +25,13 @@ public class Lever : MonoBehaviour
     {
         isOn = !isOn;
         UpdateSprite();
-        if (target != null)
+        if (targets != null)
         {
-
-            target.SendMessage("OnLeverToggle", isOn, SendMessageOptions.DontRequireReceiver);
+            foreach (GameObject obj in targets)
+            {
+                obj.GetComponent<door>().SendMessage("OnLeverToggle", isOn, SendMessageOptions.DontRequireReceiver);
+            }
+            
         }
     }
 

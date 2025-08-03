@@ -49,6 +49,10 @@ public class gui : MonoBehaviour
 
     private void quitLevel()
     {
+        foreach (GameObject ghostn in GameObject.FindGameObjectsWithTag("Ghost"))
+        {
+            Destroy(ghostn);
+        }
 
         levelSelected = 0;
         LC.startingArea();
@@ -115,14 +119,14 @@ public class gui : MonoBehaviour
 
     private void lockCursor()
     {
-        player.lockMovement(true);
+        player.lockMovement(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     private void unlockCursor()
     {
-        player.lockMovement(false);
+        player.lockMovement(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }

@@ -335,6 +335,10 @@ MonoBehaviour:
   walkingAnimate: {fileID: 48239194330533038}
   GM: {fileID: 0}
   ghostTotal: {fileID: 3957245435083407973}
+  interactLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  interactionRange: 2
 --- !u!1 &1315404045772506703
 GameObject:
   m_ObjectHideFlags: 0

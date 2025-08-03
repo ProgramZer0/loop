@@ -3,6 +3,7 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     [SerializeField] private Vector3[] stagePostions;
+    [SerializeField] private GameObject[] level;
     [SerializeField] private GameManger GM;
     [SerializeField] private GameObject player;
 
@@ -16,6 +17,7 @@ public class LevelController : MonoBehaviour
     {
         player.transform.position = stagePostions[stageNumber];
         unlocked = false;
+        level[stageNumber].SetActive(true);
         GM.resetTimer();
         GM.startTimer();
     }
@@ -45,6 +47,7 @@ public class LevelController : MonoBehaviour
         } 
         else
         {
+            level[stageNumber].SetActive(false);
             stageNumber++;
             spawnLevel();
         }

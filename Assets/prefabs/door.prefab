@@ -98,7 +98,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207618372929164125}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5ef4f174c4c56504ca97318572425aac, type: 2}
   m_CullingMode: 0
@@ -128,6 +128,7 @@ MonoBehaviour:
   collider2D: {fileID: 6010573557484721020}
   GM: {fileID: 0}
   LC: {fileID: 0}
+  openStart: 0
 --- !u!61 &6010573557484721020
 BoxCollider2D:
   m_ObjectHideFlags: 0

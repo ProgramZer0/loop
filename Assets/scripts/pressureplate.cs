@@ -5,7 +5,7 @@ public class pressureplate : MonoBehaviour
     [SerializeField] private Sprite offSprite;
     [SerializeField] private Sprite onSprite;
     [SerializeField] private GameManger GM;
-    [SerializeField] private GameObject target;
+    [SerializeField] private GameObject[] targets;
 
     private SpriteRenderer spriteRenderer;
     private bool isOn = false;
@@ -37,10 +37,12 @@ public class pressureplate : MonoBehaviour
     {
         
         UpdateSprite();
-        if (target != null)
+        if (targets != null)
         {
-
-            target.SendMessage("PlatformPush", isOn, SendMessageOptions.DontRequireReceiver);
+            foreach (GameObject obj in targets)
+            {
+                obj.GetComponent<door>().SendMessage("PlatformPush", isOn, SendMessageOptions.DontRequireReceiver);
+            }
         }
     }
 
