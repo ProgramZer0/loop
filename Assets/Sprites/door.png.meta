@@ -166,9 +166,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 61
-        y: 10
-        width: 193
-        height: 324
+        y: 52
+        width: 194
+        height: 240
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,10 +187,10 @@ TextureImporter:
       name: door_1
       rect:
         serializedVersion: 2
-        x: 308
-        y: 13
-        width: 191
-        height: 325
+        x: 309
+        y: 57
+        width: 190
+        height: 240
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,9 +210,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 523
-        y: 12
-        width: 191
-        height: 327
+        y: 57
+        width: 193
+        height: 240
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,9 +232,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 760
-        y: 12
-        width: 191
-        height: 326
+        y: 56
+        width: 192
+        height: 240
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,10 +253,10 @@ TextureImporter:
       name: door_4
       rect:
         serializedVersion: 2
-        x: 986
-        y: 15
-        width: 191
-        height: 326
+        x: 988
+        y: 59
+        width: 194
+        height: 239
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,9 +276,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1250
-        y: 13
-        width: 192
-        height: 325
+        y: 56
+        width: 196
+        height: 240
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -298,9 +298,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1528
-        y: 12
-        width: 191
-        height: 325
+        y: 55
+        width: 194
+        height: 240
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
